@@ -1,9 +1,11 @@
+console.log("code.js loaded");
 const urlBase = 'http://proctest.jaxontopel.xyz/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
 let firstName = "";
 let lastName = "";
+
 
 function doLogin()
 {
@@ -13,12 +15,12 @@ function doLogin()
 	
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
-//	var hash = md5( password );
+	var hash = md5( password );
 	
 	document.getElementById("loginResult").innerHTML = "";
 
-	let tmp = {login:login,password:password};
-//	var tmp = {login:login,password:hash};
+	//let tmp = {login:login,password:password};
+	var tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
 	
 	let url = urlBase + '/Login.' + extension;
@@ -26,18 +28,23 @@ function doLogin()
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	console.log("before try");
 	try
 	{
 		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
+		{	
+			if (xhr.readyState == 4 && xhr.status == 200) 
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
+				console.log("Server Response:", xhr.responseText);
 				userId = jsonObject.id;
-		
+				console.log("Response Object: ", jsonObject);
+				console.log("User ID: ", userId);
+
+
 				if( userId < 1 )
 				{		
-					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					document.getElementById("loginResult").innerHTML = "Username or Password is Incorrect";
 					return;
 				}
 		
@@ -45,8 +52,7 @@ function doLogin()
 				lastName = jsonObject.lastName;
 
 				saveCookie();
-	
-				window.location.href = "color.html";
+				window.location.href = "contacts.html";
 			}
 		};
 		xhr.send(jsonPayload);
@@ -58,19 +64,25 @@ function doLogin()
 
 }
 
-function saveCookie()
-{
-	let minutes = 20;
-	let date = new Date();
-	date.setTime(date.getTime()+(minutes*60*1000));	
-	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+function saveCookie() {
+    let minutes = 20;
+    let date = new Date();
+    date.setTime(date.getTime() + (minutes * 60 * 1000)); // Set expiration time
+
+    // Set the cookie
+    document.cookie = "firstName=" + firstName + ";lastName=" + lastName + ";userId=" + userId + ";expires=" + date.toGMTString();
+
+    // Log the cookie to check if it's being set
+    console.log("Cookie set: ", document.cookie);
 }
+
 
 function readCookie()
 {
+	console.log("in readCookie");
 	userId = -1;
 	let data = document.cookie;
-	let splits = data.split(",");
+	let splits = data.split(";");
 	for(var i = 0; i < splits.length; i++) 
 	{
 		let thisOne = splits[i].trim();
@@ -98,6 +110,8 @@ function readCookie()
 //		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
 	}
 }
+
+function addContact() {}
 
 function doLogout()
 {
@@ -138,6 +152,8 @@ function addColor()
 	}
 	
 }
+
+
 
 function searchColor()
 {
@@ -183,3 +199,14 @@ function searchColor()
 	}
 	
 }
+document.addEventListener("DOMContentLoaded", function () {
+    let createUserButton = document.getElementById("navigateCreateUser");
+    
+    if (createUserButton) {
+        createUserButton.addEventListener("click", function() {
+            window.location.href = "create_user.html"; 
+        });
+    } else {
+        console.error("navigateCreateUser button not found.");
+    }
+});

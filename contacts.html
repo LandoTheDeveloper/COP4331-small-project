@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <!-- <link href="css/styles.css" rel="stylesheet">  -->
+    <title class="display-6">Contacts</title>
+</head>
+
+<body class="d-flex vh-100 bg-light bg-gradient">
+    <div class="container-fluid mt-5">
+        <div class="row gx-3">
+            <div class="col-xxl-2 col-lg-3 col-md-4 p-3 card shadow-sm p-4 rounded bg-light mb-2">
+                <button type="button" id="navigateAddContact" class="btn btn-success mb-3">Add Contact</button>
+                <form class="d-flex">
+                    <input class="form-control me-2 mb-2" type="search" placeholder="Search Contact">
+                    <button class="btn btn-outline-success mb-2" type="submit">Search</button>
+                </form>
+                <form class="d-flex">
+                    <input class="form-control me-2 mb-2" type="delete" placeholder="Delete Contact">
+                    <button class="btn btn-outline-danger mb-2" type="submit">Delete</button>
+                </form>
+            </div>
+            <div class="col-xxl-10 col-lg-9 col-md-8 p-3">
+                <h3>My Contacts</h3>
+                <table class="table table-striped table-bordered thead-light">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contacts-table">
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript" src="js/crud.js"></script>
+</body>

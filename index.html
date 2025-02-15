@@ -1,22 +1,71 @@
+<!doctype html>
+<html lang="en">
 <html>
+
 <head>
-	<title>COP 4331 LAMP Stack Demo</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+	<!-- <link href="css/styles.css" rel="stylesheet">  -->
+	<title class="display-6">Contact Manager</title>
+</head>
+
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light bg-gradient">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
+
+
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6 col-lg-4">
+				<div class="text-center mb-4 ">
+					<h1>Contact Manager</h1>
+					<p class="text-muted">Please log in to continue</p>
+				</div>
+
+				<div class="card shadow-sm p-4 rounded bg-light">
+					<form class="text-start">
+						<div class="mb-3">
+							<!-- <label for="loginName" class="form-label">Username</label> -->
+							<input type="text" id="loginName" class="form-control" placeholder="Username">
+						</div>
+						<div class="mb-3">
+							<!-- <label for="loginPassword" class="form-label">Password</label> -->
+							<input type="password" id="loginPassword" class="form-control" placeholder="Password">
+						</div>
+						<button type="button" id="loginButton" class="btn btn-primary w-100" onclick="doLogin();">
+							Submit
+						</button>
+						<span id="loginResult" class="text-danger"></span>
+					</form>
+				</div>
+				
+
+				<div class="card shadow-sm p-4 rounded mt-3 text-center">
+					<h6>Don't have an account?</h4>
+					<button type="button" id="navigateCreateUser" class="btn btn-dark"> Create New User </button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--
+	<div id="loginDiv">
+		<span id="inner-title">PLEASE LOG IN</span>
+		<input type="text" id="loginName" placeholder="Username" /><br />
+		<input type="password" id="loginPassword" placeholder="Password" /><br />
+		<button type="button" id="loginButton" class="btn btn-primary" onclick="doLogin();"> Do It </button>
+		<button type="button" id="navigateCreateUser" class="btn btn-primary"> Create User </button>
+		<span id="loginResult"></span>
+	</div>
+
+-->
 	<script type="text/javascript" src="js/md5.js"></script>
 	<script type="text/javascript" src="js/code.js"></script>
-    <link href="css/styles.css" rel="stylesheet">	
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-</head>
-<body>
-
-<h1 id="title">COP 4331 LAMP Stack Demo</h1>
-
-<div id="loginDiv">
-	<span id="inner-title">PLEASE LOG IN</span>
-	<input type="text" id="loginName" placeholder="Username" /><br />
-	<input type="password" id="loginPassword" placeholder="Password"/><br />
-	<button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Do It </button>
-	<span id="loginResult"></span>
-</div>
-
 </body>
+
 </html>

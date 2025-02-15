@@ -72,14 +72,6 @@ body
 	font-size: 30px;
 }
 
-input[type="text"],input[type="password"]{
-    border-radius: 25px;
-    text-align: center;
-    width: 80%;
-    margin-left: 10%;
-    margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
-}
 
 #inner-title{
     display: inline-block;
@@ -103,12 +95,6 @@ input[type="text"],input[type="password"]{
     color: #95060a;
 }
 
-#userName{
-    display: inline-block;
-    width: 80%;
-    margin-left: 10%;
-    text-align: center;
-}
 
 #logoutButton{
     width: 20%;
